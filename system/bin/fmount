@@ -11,7 +11,7 @@
 # Example: fmount -b "WhatsApp" ".foldermount/WhatsApp"
 # Use a dot at the begin to hide the folder from media scan ;)
 
-MODDIR="/magisk/magisk-foldermount"
+MODDIR="/magisk/magisk-foldermount" # lol, this should be probably avoided, but idk a better solution
 BINDLIST="$MODDIR/foldermount.fstab"
 LOG="$MODDIR/mount.log"
 
