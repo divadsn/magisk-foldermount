@@ -11,7 +11,6 @@
 # Example: fmount -b "WhatsApp" ".foldermount/WhatsApp"
 # Use a dot at the begin to hide the folder from media scan ;)
 
-#TODO: I will open a issue with future plans and with plans how I want to implement these. ~ Codebucket
 MODDIR="/magisk/magisk-foldermount" # lol, this should be probably avoided, but idk a better solution
 BINDLIST="$MODDIR/foldermount.fstab"
 LOG="$MODDIR/mount.log"
@@ -46,19 +45,29 @@ EOM
         exit 3
     fi
 
-    src=$DATAPATH/${2}
+    src=${2}
     if [[ $# < 3 ]]; then
         dest=$EXTSDPATH/${2}
     else
         dest=$EXTSDPATH/${3}
     fi
 
-    if ! mountpoint -q "$src"
+    if ! mountpoint -q "/data/media/0/$src"
     then
-        if ! mount -o bind "$dest" "$src" 1>>$LOG 2>>$LOG
+        if ! mountpoint -q "/mnt/runtime/default/emulated/0/$src"
         then
-            echo "E: Error while mounting folder, please check the log file for details."
-            exit 4
+            echo "Mounting $dest -> /data/media/0/$src..." >> $LOG
+            if ! mount -o bind "$dest" "/data/media/0/$src" 1>>$LOG 2>>$LOG
+            then
+                echo "Failed. Mounting $dest -> /mnt/runtime/default/emulated/0/$src..." >> $LOG
+                mount -o bind "$dest" "/mnt/runtime/default/emulated/0/$src" 1>>$LOG 2>>$LOG
+                mount -o bind "$dest" "/mnt/runtime/read/emulated/0/$src" 1>>$LOG 2>>$LOG
+                mount -o bind "$dest" "/mnt/runtime/write/emulated/0/$src" 1>>$LOG 2>>$LOG
+            fi
+            echo "Done!" >> $LOG
+        else
+            echo "E: Folder already mounted."
+            exit 5
         fi
     else
         echo "E: Folder already mounted."
@@ -75,17 +84,28 @@ EOM
         exit 3
     fi
 
-    src=$DATAPATH/${2}
-    if mountpoint -q "$src"
+    src=${2}
+    if mountpoint -q "/data/media/0/$src"
     then
-        if ! umount "$src" 1>>$LOG 2>>$LOG
+        echo "Unmounting /data/media/0/$src..." >> $LOG
+        if ! umount "/data/media/0/$src" 1>>$LOG 2>>$LOG
         then
             echo "E: Error while unmounting folder, please check the log file for details."
             exit 4
         fi
+        echo "Done!" >> $LOG
     else
-        echo "E: Folder already unmounted."
-        exit 5
+        if mountpoint -q "/mnt/runtime/default/emulated/0/$src"
+        then
+            echo "Unmounting /mnt/runtime/default/emulated/0/$src..." >> $LOG
+            umount "/mnt/runtime/default/emulated/0/$src" 1>>$LOG 2>>$LOG
+            umount "/mnt/runtime/read/emulated/0/$src" 1>>$LOG 2>>$LOG
+            umount "/mnt/runtime/write/emulated/0/$src" 1>>$LOG 2>>$LOG
+        else
+            echo "E: Folder already unmounted."
+            exit 5
+        fi
+        echo "Done!" >> $LOG
     fi
 }
 
