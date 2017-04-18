@@ -23,7 +23,8 @@ Open terminal then type:
 
 ## Changelog
 v0.8
- - Initial release
+  - Initial release
+
 v0.8.5
- - Small bugfixes and improvements
- - Added alternative way to mount folders on boot (post-fs-data.d support)
+  - Small bugfixes and improvements
+  - Added alternative way to mount folders on boot (post-fs-data.d support)
