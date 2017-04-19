@@ -15,6 +15,16 @@ MODDIR="/magisk/magisk-foldermount" # lol, this should be probably avoided, but 
 BINDLIST="$MODDIR/foldermount.fstab"
 LOG="$MODDIR/mount.log"
 
+# Set up busybox applets for easier integration
+alias busybox=/data/magisk/busybox
+c=0
+for i in $(busybox --list); do
+  if [ "$c" -gt 5 ] || [ "$i" != 'echo' ]; then
+    alias $i="/data/magisk/busybox $i"
+  fi
+done
+unset c
+
 # Check if /data has been mounted
 DATAPATH="/data/media/0"
 if ! mountpoint -q "/data"; then
