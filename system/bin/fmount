@@ -48,11 +48,22 @@ fi
 
 ## HELPER FUNCTIONS
 function error() {
+    echo "E: $1"
+    log("ERROR", $1)
+}
 
+function warn() {
+    echo "Note: $1"
+    log("WARNING", $1)
+}
+
+function info() {
+    echo $1
+    log("INFO", $1)
 }
 
 function log() {
-
+    echo "$(date -u) $1 $2" >> $LOG
 }
 
 function showUsage() {
