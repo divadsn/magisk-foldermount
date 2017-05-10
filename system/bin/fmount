@@ -1,7 +1,7 @@
 #!/system/bin/sh
-# Magisk FolderMount v0.8.5
+# Magisk FolderMount v0.8.6
 # (c) 2017 Codebucket
-# Easily mount internal SD card folders to external SD folders. 
+# Easily mount internal SD card folders to external SD folders.
 #
 # Inspired by FolderMount created by madmack, unfortunately his app does not work with MagiskSU
 #
@@ -19,9 +19,9 @@ LOG="$MODDIR/mount.log"
 alias busybox=/data/magisk/busybox
 c=0
 for i in $(busybox --list); do
-  if [ "$c" -gt 5 ] || [ "$i" != 'echo' ]; then
-    alias $i="/data/magisk/busybox $i"
-  fi
+    if [ "$c" -gt 5 ] || [ "$i" != 'echo' ]; then
+        alias $i="/data/magisk/busybox $i"
+    fi
 done
 unset c
 
@@ -46,6 +46,21 @@ if [ ! $EXTSDPATH ]; then
     exit 2
 fi
 
+## HELPER FUNCTIONS
+function error() {
+
+}
+
+function log() {
+
+}
+
+function showUsage() {
+
+}
+## END HELPER FUNCTIONS
+
+## METHOD FUNCTIONS
 function bindFunc() {
     if [[ $# = 1 ]]; then
         cat << EOM
@@ -132,13 +147,13 @@ function listFunc() {
 
 #TODO: To be implemented in v0.9
 #This function should remount all folders which are in $BINDLIST (some sort of list parsing needed)
-function rebindFunc() { 
+function rebindFunc() {
     exit 0
 }
 
 function helpFunc() {
 	cat << EOM
-Magisk FolderMount v0.8.5
+Magisk FolderMount v0.8.6
 
 Internal SD card: $DATAPATH
 External SD card: $EXTSDPATH
@@ -147,6 +162,7 @@ Usage: fmount [-budlr] [source] (destination)
 EOM
     exit 0
 }
+## END METHOD FUNCTIONS
 
 # Show help if no arguments passed
 if [[ $# = 0 ]]; then
