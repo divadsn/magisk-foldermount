@@ -34,7 +34,7 @@ fi
 
 # Search for external SD card in /mnt/runtime/default...
 for var in `ls /mnt/runtime/default`; do
-    if echo "$var" | grep -Eq '[0-9A-F]{4}-[0-9A-F]{4}'; then
+    if echo "$var" | grep -Eq '[0-9a-fA-F]{4}-[0-9a-fA-F]{4}'; then
         EXTSDPATH=/mnt/media_rw/$var
         break
     fi
