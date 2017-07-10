@@ -13,7 +13,7 @@ Open terminal then type:
 
 ## Prerequisites
 * Android 5.0+
-* Magisk v11.6 or higher
+* Magisk v13.1 or higher
 
 ## Links
 * [Magisk](https://forum.xda-developers.com/apps/magisk/official-magisk-v7-universal-systemless-t3473445)
@@ -28,3 +28,7 @@ v0.8
 v0.8.5
   - Small bugfixes and improvements
   - Added alternative way to mount folders on boot (post-fs-data.d support)
+
+v0.8.6
+  - Updated Magisk module template to v4
+  - Fixed regex for lowercase UUIDs on some ROMs
