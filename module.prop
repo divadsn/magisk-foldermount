@@ -1,7 +1,7 @@
 id=magisk-foldermount
 name=Magisk FolderMount
-version=v0.8.6
-versionCode=3
+version=v0.8.7
+versionCode=4
 author=Codebucket
 description=Easily mount internal SD card folders to external SD folders.
 template=4

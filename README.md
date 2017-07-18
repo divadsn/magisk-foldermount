@@ -29,6 +29,6 @@ v0.8.5
   - Small bugfixes and improvements
   - Added alternative way to mount folders on boot (post-fs-data.d support)
 
-v0.8.6
+v0.8.7
   - Updated Magisk module template to v4
   - Fixed regex for lowercase UUIDs on some ROMs
