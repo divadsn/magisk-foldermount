@@ -3,7 +3,7 @@
 #
 # Magisk Module Template Install Script
 # by topjohnwu
-# 
+#
 ##########################################################################################
 
 # Detect whether in boot mode
@@ -34,7 +34,7 @@ ZIP=$3
 ui_print() {
   if $BOOTMODE; then
     echo "$1"
-  else 
+  else
     echo -n -e "ui_print $1\n" >> /proc/self/fd/$OUTFD
     echo -n -e "ui_print\n" >> /proc/self/fd/$OUTFD
   fi
@@ -133,6 +133,7 @@ mkdir -p $MODPATH
 # Copy files
 ui_print "- Copying files"
 mv $INSTALLER/system $MODPATH/system
+mv $INSTALLER/busybox-arm $MODPATH/busybox-arm
 
 # Handle replace folders
 for TARGET in $REPLACE; do
