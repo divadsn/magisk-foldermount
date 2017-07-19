@@ -32,3 +32,6 @@ v0.8.5
 v0.8.7
   - Updated Magisk module template to v4
   - Fixed regex for lowercase UUIDs on some ROMs
+
+v0.8.7.1
+  - Added busybox binary back, Magisk v13 doesn't provide it's own anymore
