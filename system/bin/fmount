@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Magisk FolderMount v0.8.7.1
+# Magisk FolderMount v0.8.7.2
 # (c) 2017 Codebucket
 # Easily mount internal SD card folders to external SD folders.
 #
@@ -153,7 +153,7 @@ function rebindFunc() {
 
 function helpFunc() {
 	cat << EOM
-Magisk FolderMount v0.8.7.1
+Magisk FolderMount v0.8.7.2
 
 Internal SD card: $DATAPATH
 External SD card: $EXTSDPATH
