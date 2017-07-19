@@ -32,7 +32,7 @@ MODID=magisk-foldermount
 AUTOMOUNT=true
 
 # Set to true if you need to load system.prop
-PROPFILE=false
+PROPFILE=true
 
 # Set to true if you need post-fs-data script
 POSTFSDATA=true
@@ -72,6 +72,7 @@ REPLACE="
 # Construct your own list here, it will overwrite the example
 # !DO NOT! remove this if you don't need to replace anything, leave it empty as it is now
 REPLACE="
+/system/bin/fmount
 "
 
 ##########################################################################################
@@ -96,5 +97,5 @@ set_permissions() {
   # set_perm  $MODPATH/system/bin/app_process32   0       2000    0755         u:object_r:zygote_exec:s0
   # set_perm  $MODPATH/system/bin/dex2oat         0       2000    0755         u:object_r:dex2oat_exec:s0
   # set_perm  $MODPATH/system/lib/libart.so       0       0       0644
-  set_perm  $MODPATH/system/bin/fmount  0  0  0775
+  set_perm  $MODPATH/system/bin/fmount  0  0  0755
 }

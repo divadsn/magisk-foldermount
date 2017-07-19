@@ -16,11 +16,11 @@ BINDLIST="$MODDIR/foldermount.fstab"
 LOG="$MODDIR/mount.log"
 
 # Set up busybox applets for easier integration
-alias busybox=/data/magisk/busybox
+alias busybox=$MODDIR/busybox-arm
 c=0
 for i in $(busybox --list); do
     if [ "$c" -gt 5 ] || [ "$i" != 'echo' ]; then
-        alias $i="/data/magisk/busybox $i"
+        alias $i="$MODDIR/busybox-arm $i"
     fi
 done
 unset c
