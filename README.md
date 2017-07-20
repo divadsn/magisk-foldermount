@@ -14,6 +14,7 @@ Open terminal then type:
 ## Prerequisites
 * Android 5.0+
 * Magisk v13.1 or higher
+* FAT32 formatted SD card (exFAT is known for causing problems, see #7)
 
 ## Links
 * [Magisk](https://forum.xda-developers.com/apps/magisk/official-magisk-v7-universal-systemless-t3473445)
