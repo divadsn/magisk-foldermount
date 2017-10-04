@@ -41,12 +41,11 @@ LATESTARTSERVICE=true
 # Set what you want to show when installing your mod
 
 print_modname() {
-  ui_print "*******************************"
-  ui_print "       Magisk FolderMount      "
-  ui_print "*******************************"
-  ui_print " Version 0.8.7.2               "
-  ui_print " Made by David Sn (Codebucket) "
-  ui_print "*******************************"
+  ui_print "******************************"
+  ui_print "      Magisk FolderMount      "
+  ui_print "******************************"
+  ui_print "Version 0.8.7.2               "
+  ui_print "Made by David Sn (@Codebucket)"
 }
 
 ##########################################################################################
